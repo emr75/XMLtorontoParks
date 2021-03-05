@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Locations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Location" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>                
+                            <xs:element name="LocationID" type="xs:integer" minOccurs="1" maxOccurs="1" />
+                            <xs:element name="LocationName" type="xs:string" minOccurs="0" maxOccurs="1"  />
+                            <xs:element name="Address" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="PostalCode" type="xs:string" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="PhoneNumber" type="xs:string" minOccurs="0" maxOccurs="1" />
+                            <xs:element name="Facilities" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Facility" minOccurs="0" maxOccurs="unbounded">
+                                             <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="FacilityID" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                                    <xs:element name="FacilityType" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                                    <xs:element name="FacilityName" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                                    <xs:element name="FacilityDisplayName" type="xs:string" minOccurs="0" maxOccurs="1" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                         </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Intersections" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Intersection" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element> 
+                         </xs:sequence>
+                     </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Custom DataType -->
+    <xs:simpleType name="telephone">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[0-9*#+]+$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="postalcode">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\w{7}" />            
+    </xs:restriction>
+  </xs:simpleType>
+
+
+
+
+
+</xs:schema>
